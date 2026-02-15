@@ -1,0 +1,179 @@
+/* =========================================================
+   HEADER: nincs – az oldal a mainnel kezdődik
+   Itt csak az OFFER osztályai vannak.
+   ========================================================= */
+
+/* =========================================================
+   OFFER – 2 oszlop:
+   BAL: newbg logo
+   JOBB: CTA
+   Telefonon: 1 oszlop, logo felül, CTA alatta
+   ========================================================= */
+
+.offer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.offer__inner.section-content {
+    width: 100%;
+
+    display: grid;
+    grid-template-columns: minmax(220px, 1fr) minmax(320px, 1.15fr);
+    align-items: center;
+    gap: 1.25rem;
+
+    padding-top: 1.25rem;
+    padding-bottom: 1.25rem;
+}
+
+/* BAL: logo */
+.offer__logo-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+
+    min-width: 0;
+}
+
+
+.offer__logo-link > .offer__logo {
+    display: block;
+    object-fit: contain;
+
+    width: min(100%, 520px);
+    height: auto;
+
+    /* a doboz ne nőjön indokolatlanul magasra */
+    max-height: 350px;
+
+    /* extra védelem torzítás ellen, ha valahol img-re height/width rá van erőltetve */
+    aspect-ratio: auto;
+}
+
+/* JOBB oldal: CTA */
+.offer__right {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+
+    min-width: 0;
+}
+
+/* CTA wrapper + lebegés */
+.offer__cta-pos {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    animation: floatY_simple 3s ease-in-out infinite;
+    will-change: transform;
+}
+
+/* CTA gomb */
+.offer__cta {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+
+    padding: 0.95rem 1.35rem;
+    border-radius: 9999px;
+
+    background: #ef4444;
+    color: #ffffff;
+
+    font-weight: 900;
+    letter-spacing: 0.01em;
+    line-height: 1.15;
+
+    text-decoration: none;
+    cursor: pointer;
+
+    border: 2px solid rgba(255, 255, 255, 0.18);
+
+    font-size: clamp(1rem, 2.05vw, 1.35rem);
+    max-width: min(56rem, 100%);
+
+    /* csak egész szó törés, nincs kötőjel, nincs karaktertörés */
+    white-space: normal;
+    overflow-wrap: normal;
+    word-break: keep-all;
+    hyphens: none;
+
+    box-shadow:
+        0 12px 22px rgba(0, 0, 0, 0.22),
+        0 0 20px rgba(239, 68, 68, 0.22);
+
+    transition: filter 160ms ease, box-shadow 160ms ease, transform 160ms ease;
+}
+
+.offer__cta:hover {
+    filter: brightness(1.06);
+    box-shadow:
+        0 16px 26px rgba(0, 0, 0, 0.28),
+        0 0 26px rgba(239, 68, 68, 0.28);
+}
+
+.offer__cta:active {
+    transform: translateY(1px);
+    filter: brightness(1.02);
+}
+
+.offer__cta:focus-visible {
+    outline: 3px solid rgba(14, 165, 233, 0.55);
+    outline-offset: 4px;
+}
+
+/* Lebegés */
+@keyframes floatY_simple {
+    0%, 100% { transform: translateY(-10px); }
+    50% { transform: translateY(10px); }
+}
+
+/* Telefon: 1 oszlop */
+@media (max-width: 700px) {
+    .offer__inner.section-content {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+
+    .offer__logo-link > .offer__logo {
+        width: min(100%, 600px);
+        max-height: 350px;
+        height: auto;
+    }
+
+    .offer__right {
+        align-items: center;
+    }
+
+    .offer__cta{
+        font-size: clamp(1.2rem, 2.5vw, 1.75rem);
+    }
+}
+
+/* Keskeny telefon */
+@media (max-width: 420px) {
+    .offer__logo-link > .offer__logo {
+        width: min(100%, 450px);
+        max-height: 330px;
+        height: auto;
+    }
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+    .offer__cta-pos {
+        animation: none !important;
+    }
+
+    .offer__cta {
+        transition: none !important;
+    }
+}

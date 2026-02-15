@@ -1,0 +1,341 @@
+.services {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+
+/* background: linear-gradient(135deg, rgba(14, 165, 233, 0.06), rgba(240, 208, 62, 0.06)); */
+
+.services-cards {
+  margin-top: 2rem;
+  width: 100%;
+}
+
+.services-cards-grid {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr)); /* ✅ 2 oszlop alapból (mindenhol, kivéve telefon) */
+  gap: 2rem;
+  padding: 0.5rem 0 1rem;
+  align-items: start;
+
+}
+
+/* Kártya alap */
+.services .service-card {
+  position: relative;
+  border-radius: 15px;
+  border: 2px solid var(--texts);
+  box-shadow: 2px 10px 10px rgba(107, 114, 128, 0.55);
+  background: rgba(255, 255, 255, 0.92);
+  overflow: hidden;
+  cursor: pointer;
+  user-select: none;
+  background: linear-gradient(135deg, rgba(14, 165, 233, 0.56), rgba(240, 208, 62, 0.56));
+  will-change: transform;
+  transition: border-color .15s ease, box-shadow .15s ease, transform .15s ease;
+}
+
+.services .service-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 2px 14px 16px rgba(107, 114, 128, 0.35);
+}
+
+.services .service-card:focus-visible {
+  outline: 3px solid rgba(14, 165, 233, 0.55);
+  outline-offset: 3px;
+}
+
+/* háttérkép összecsukott állapotban is (finoman) */
+.services .service-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: var(--sc-bg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: min(92%, 340px);
+  opacity: 0.18;
+  pointer-events: none;
+  filter: drop-shadow(0 6px 10px rgba(0, 0, 0, 0.10));
+}
+
+.services .service-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.55), rgba(255, 255, 255, 0.92));
+  pointer-events: none;
+}
+
+.services .service-card.is-open::before {
+  opacity: 0.12;
+}
+
+/* Head */
+.service-card__head {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1.15rem 1.15rem 1rem;
+
+  min-height: 7.25rem;
+  border-bottom: none;
+
+  min-width: 0; /* ✅ hogy a kapszula szöveg törhessen */
+}
+
+.service-card.is-open>.service-card__head {
+  border-bottom: 2px solid rgba(91, 161, 210, 0.65);
+}
+
+.service-card__abbr {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 0.45rem 0.85rem;
+  border-radius: 999px;
+
+  font-weight: 900;
+  letter-spacing: 0.03em;
+
+  font-size: clamp(1rem, 2.25vw, 1.33rem);
+  line-height: 1.15;
+  text-align: center;
+  white-space: normal;
+  overflow-wrap: anywhere;
+  hyphens: auto;
+
+  /* ✅ ne nyomja el a jobb oldali ikonokat */
+  flex: 1 1 auto;
+  min-width: 0;
+  max-width: calc(100% - 4.25rem);
+
+  color: #fff;
+  background: rgba(35, 65, 118, 0.92);
+  /* shield-inner-bg */
+  border: 2px solid rgba(91, 161, 210, 0.55);
+  /* shield-border tónus */
+  box-shadow: 0 10px 18px rgba(0, 0, 0, 0.08);
+}
+
+.service-card__meta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding-top: 0.15rem;
+
+  color: var(--services-i-lightning-fill);
+}
+
+.service-card__meta i {
+  font-size: 1.55rem;
+  line-height: 1;
+  filter: drop-shadow(1px 2px 2px rgba(0, 0, 0, 0.12));
+}
+
+.service-card__chev {
+  display: inline-flex;
+  transition: transform .25s ease;
+  color: var(--services-heading);
+  opacity: 0.9;
+}
+
+.services .service-card.is-open .service-card__chev {
+  transform: rotate(180deg);
+}
+
+/* Body */
+.service-card__body {
+  position: relative;
+  z-index: 1;
+  display: none;
+  /* JS slideDown */
+  padding: 0 1.15rem 1.15rem;
+}
+
+.service-card__body>.meta-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-items: center;
+}
+
+.service-card__hero {
+  width: 100%;
+  height: clamp(8rem, 22vw, 12rem);
+
+  margin-bottom: 1rem;
+
+  background-image: var(--sc-bg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+
+}
+
+.service-card__title {
+  color: var(--services-heading);
+  font-weight: 900;
+  letter-spacing: 0.02em;
+  line-height: 1.15;
+  text-align: center;
+  margin: 0.25rem 0 1rem;
+
+  font-size: var(--listed-service-heading-fontsize);
+}
+
+/* Nyitott állapot: teljes sor */
+.services .service-card.is-open {
+  grid-column: 1 / -1;
+  border-color: rgba(91, 161, 210, 0.65);
+}
+
+/* Animáció közben: hover ne zavarjon */
+.services .service-card.is-expanding {
+  transform: none;
+}
+
+.services-why-btn {
+  width: min(100%, 46rem);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+
+  margin: 0 0 1rem;
+  padding: 0.85rem 1rem;
+
+  border-radius: 999px;
+  border: 2px solid rgba(240, 208, 62, 0.95);
+  background: rgba(240, 208, 62, 0.75);
+
+  color: var(--text);
+  font-weight: 900;
+  letter-spacing: 0.02em;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.services-why-btn i {
+  font-size: 1.25rem;
+  line-height: 1;
+  color: var(--text);
+}
+
+/* Nyitott kártyában legyen kicsit “kártyásabb” a gomb */
+.service-card.is-open .services-why-btn {
+  box-shadow: 0 10px 18px rgba(0, 0, 0, 0.10);
+}
+
+.services-why-btn:focus-visible {
+  outline: 3px solid rgba(14, 165, 233, 0.55);
+  outline-offset: 3px;
+}
+
+/* LISTA */
+.service-features {
+  margin: 0;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+
+  text-align: left;
+  list-style: none;
+  padding: 1rem 1rem 1.1rem;
+}
+
+.service-features li {
+  width: min(100%, 46rem);
+  margin: 0 auto;
+
+  display: grid;
+  grid-template-columns: 2.35rem 1fr;
+  column-gap: 0.85rem;
+  align-items: center;
+
+  padding: 0.85rem 1rem;
+  border-radius: 12px;
+
+  background: rgba(107, 114, 128, 0.08);
+  border: 1px solid rgba(107, 114, 128, 0.22);
+}
+
+.service-features li i {
+  width: 2.35rem;
+  align-self: start;
+  font-size: 2.5rem;
+  line-height: 1.6;
+
+  color: var(--services-i-list-icons);
+  filter: drop-shadow(1px 1px 1px rgba(0, 0, 0, 0.25));
+}
+
+.service-feature-text {
+  display: block;
+  line-height: 1.4;
+
+  font-size: var(--listed-service-list-fontsize);
+  font-weight: 550;
+  color: var(--common-description-color);
+}
+
+/* Tablet */
+@media (max-width: 991px) {
+
+  .services-cards-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1.75rem;
+  }
+
+  .service-card__head {
+    min-height: 6.75rem;
+  }
+}
+
+/* Telefon */
+@media (max-width: 700px) {
+
+  .services-cards-grid {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+
+  .service-card__head {
+    min-height: 6.25rem;
+    padding: 1rem 1rem 0.85rem;
+  }
+
+  .service-card__body {
+    padding: 0 1rem 1rem;
+  }
+}
+
+/* Keskeny telefon */
+@media (max-width: 380px) {
+  .services-cards-grid {
+    gap: 1rem;
+  }
+
+  .service-card__abbr {
+    padding: 0.4rem 0.75rem;
+  }
+
+  .service-card__meta i {
+    font-size: 1.4rem;
+  }
+}
+
+@media (min-width: 992px) {
+  .services h3.heading {
+    margin-bottom: 1.25rem;
+    /* PC-n kicsit feszesebb */
+  }
+}

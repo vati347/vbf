@@ -1,0 +1,154 @@
+<!doctype html>
+<html lang="hu">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description"
+    content="Villanyszerelés városi környezetben – gyors hibaelhárítás, új szerelések, karbantartás. Kapcsolat: +36 30 123 4567 · vassgabor@electroleda.hu">
+  <meta name="theme-color" content="#0EA5E9">
+  <link rel="icon" href="favicon.ico">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <meta property="og:title" content="Villanyszerelés – Vass Gábor E. V.">
+  <meta property="og:description"
+    content="Gyors, megbízható villanyszerelő városi környezetben. Hívás: +36 30 123 4567">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="images/plogo.png">
+  <meta property="og:locale" content="hu_HU">
+  <meta name="twitter:card" content="summary">
+  <title>Villanyszerelés – Vass Gábor E. V.</title>
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap&family=Roboto&family=Inter&display=swap&family=Montserrat:wght@500;600;700;800&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="styles.defaults.css">
+  <link rel="stylesheet" href="styles.nav.css">
+  <link rel="stylesheet" href="styles.welcome.css">
+  <link rel="stylesheet" href="styles.services.css">
+  <link rel="stylesheet" href="styles.services.modal.css">
+  <link rel="stylesheet" href="styles.contacts.css">
+  <link rel="stylesheet" href="styles.car.css">
+  <link rel="stylesheet" href="styles.ref.css">
+  <link rel="stylesheet" href="style_svg_logo.css">
+  <link rel="stylesheet" href="styles.email.css">
+
+  <script
+    type="application/ld+json">{"@context": "https://schema.org", "@type": "Electrician", "name": "Vass Gábor E. V.", "email": "mailto:vassgabor@electroleda.hu", "telephone": "+36 30 123 4567"}</script>
+</head>
+
+<body class="page page--contact">
+  <a class="skip-link" href="#main">Ugrás a tartalomra</a>
+
+  <main id="main">
+    <section class="contact constant-margin">
+      <header class="contact-header">
+        <h3 class="heading">Kapcsolatfelvétel</h3>
+      </header>
+
+      <div class="contact-layout section-content">
+        <div class="contact-grid">
+          <!-- INFO KÁRTYA -->
+          <section class="contact-card contact-card--info" aria-label="Elérhetőségek">
+            <div class="contact-card__header">
+              <h4 class="contact-card__title">Információk:</h4>
+            </div>
+
+            <ul class="contact-meta" aria-label="Információk">
+              <li class="contact-meta__item">
+                <span class="contact-meta__label">E-mail</span>
+                <span class="contact-meta__value">
+                  <a class="contact-link" href="mailto:info@vbfplus.hu">info@vbfplus.hu</a>
+                </span>
+              </li>
+
+              <li class="contact-meta__item">
+                <span class="contact-meta__label">Válaszidő</span>
+                <span class="contact-meta__value">Jellemzően 1 munkanapon belül</span>
+              </li>
+
+              <li class="contact-meta__item">
+                <span class="contact-meta__label">Tipp</span>
+                <span class="contact-meta__value">
+                  A pontosabb és gyorsabb válaszadás érdekében fogalmazd meg pár sorban a problémát és add meg a
+                  telefonszámodat vagy email címedet, hogy elérjünk.
+                </span>
+              </li>
+            </ul>
+
+            <div class="contact-note" role="note">
+              Az üzenet elküldésével elfogadod, hogy a megadott adatokat kizárólag kapcsolatfelvétel céljából kezeljük.
+            </div>
+          </section>
+
+          <!-- ŰRLAP KÁRTYA -->
+          <section class="contact-card contact-card--form" aria-label="Üzenet küldése">
+            <div class="contact-card__header">
+              <h4 class="contact-card__title">Üzenet küldése</h4>
+              <p class="contact-card__subtitle">A *-gal jelölt mezők kötelezőek.</p>
+            </div>
+
+            <form class="contact-form" action="/contact.php" method="POST" accept-charset="UTF-8">
+              <div class="contact-row">
+                <label class="contact-field">
+                  <span class="contact-field__label">Név *</span>
+                  <input class="contact-field__control" type="text" name="name" required maxlength="80"
+                    autocomplete="name" placeholder="Pl. Kovács Péter">
+                </label>
+
+                <label class="contact-field">
+                  <span class="contact-field__label">E-mail *</span>
+                  <input class="contact-field__control" type="email" name="email" required maxlength="120"
+                    autocomplete="email" placeholder="pl. peter@email.hu">
+                </label>
+              </div>
+
+              <label class="contact-field">
+                <span class="contact-field__label">Telefon (opcionális)</span>
+                <input class="contact-field__control" type="tel" name="phone" maxlength="40" autocomplete="tel"
+                  placeholder="+36 …">
+              </label>
+
+              <label class="contact-field">
+                <span class="contact-field__label">Üzenet *</span>
+                <textarea class="contact-field__control" name="message" required maxlength="3000" rows="7"
+                  placeholder="Írd le röviden, miben segíthetünk…"></textarea>
+              </label>
+
+              <!-- Honeypot (robotcsapda) -->
+              <div class="hp" aria-hidden="true">
+                <label>Website <input name="website" tabindex="-1" autocomplete="off"></label>
+              </div>
+
+              <div class="contact-actions">
+                <button class="contact-btn" type="submit">Küldés</button>
+
+                <a class="contact-btn contact-btn--ghost"
+                  href="mailto:info@vbfplus.hu?subject=Kapcsolatfelv%C3%A9tel%20-%20vbfplus.hu">
+                  E-mail kliens megnyitása
+                </a>
+              </div>
+
+              <p class="contact-help">
+                Ha nem érkezik válasz, nézd meg a spam/promóciók mappát is.
+              </p>
+            </form>
+          </section>
+        </div>
+
+        <!-- ✅ Contact-specifikus vissza gomb (nincs about-os class) -->
+        <nav class="contact-nav" aria-label="Oldal navigáció">
+          <a class="contact-btn contact-btn--ghost contact-nav__back" href="./index.html" aria-label="Vissza a főoldalra">
+            <i class="bi bi-arrow-left-circle" aria-hidden="true"></i>
+            Vissza a főoldalra
+          </a>
+        </nav>
+      </div>
+    </section>
+  </main>
+</body>
+
+</html>

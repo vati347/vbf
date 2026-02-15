@@ -1,0 +1,407 @@
+/* =========================================================
+   Bemutatkozás (WELCOME) – KÉP + CTA gomb
+   (kitakarítva: régi info-row + welcome-contacts törölve)
+   ========================================================= */
+
+.welcome {
+  display: grid;
+  grid-template-areas:
+    "mheading"
+    "mid";
+  grid-template-columns: 1fr;
+  grid-template-rows: auto auto;
+
+  margin-bottom: 2rem;
+  margin-top: 2rem;
+}
+
+.intro-header {
+  grid-area: mheading;
+}
+
+/* =========================================================
+   HERO blokk: kép középen + overlay gomb
+   ========================================================= */
+
+.welcome-hero {
+  grid-area: mid;
+
+  position: relative;
+
+  /* középre igazítás garantáltan */
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  padding: 0.75rem 0 1rem;
+}
+
+/* középen álló "kártya" konténer */
+.welcome-hero__img {
+  display: block;
+
+  /* ✅ fallback (mindenhol működik) */
+  width: 100%;
+  max-width: 60rem;
+  /* közép + max szélesség */
+  width: -webkit-fill-available;
+  margin: 0 auto;
+
+  /* arány + vágás */
+  height: clamp(14rem, 36vw, 26rem);
+  object-fit: cover;
+
+  border-radius: 18px;
+  border: 2px solid rgba(107, 114, 128, 0.22);
+  box-shadow: 2px 12px 18px rgba(107, 114, 128, 0.25);
+}
+
+@supports (width: -webkit-fill-available) {
+  .welcome-hero__img{
+    max-width: none; 
+  }
+}
+
+/* Finom sötét overlay a kép tetején – csak olvashatóságért (NINCS blur) */
+.welcome-hero::after {
+  content: "";
+  position: absolute;
+  top: 0.75rem;
+  left: 50%;
+  transform: translateX(-50%);
+
+  width: min(100%, 60rem);
+  height: clamp(14rem, 36vw, 26rem);
+
+  border-radius: 18px;
+  pointer-events: none;
+
+}
+
+/* Pozicionálás + lebegés WRAPPEREN */
+.welcome-hero__btn-pos {
+  position: absolute;
+  top: 3rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 2;
+
+  animation: floatY 3s ease-in-out infinite;
+  will-change: transform;
+}
+
+/* CTA gomb – már NEM absolute, csak a kinézet + hover scale */
+.welcome-hero__btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+
+  padding: 0.85rem 1.15rem;
+  border-radius: 999px;
+
+  text-decoration: none;
+  cursor: pointer;
+
+  font-size: clamp(1.25rem, 2.5vw, 1.5rem);
+  font-weight: 900;
+  letter-spacing: 0.02em;
+
+  color: var(--header-bg-color);
+  background: var(--shield-border);
+  border: 2px solid var(--shield-border);
+
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.5);
+
+  transform: scale(1);
+  transform-origin: center;
+
+  transition: transform 160ms ease, box-shadow 160ms ease, background-color 160ms ease;
+}
+
+/* Lebegés a wrapperen (közép + Y mozgás együtt) */
+@keyframes floatY {
+
+  0%,
+  100% {
+    transform: translateX(-50%) translateY(-10px);
+  }
+
+  50% {
+    transform: translateX(-50%) translateY(10px);
+  }
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .welcome-hero__btn-pos {
+    animation: none;
+  }
+}
+
+/* ikonok */
+.welcome-hero__btn i {
+  font-size: 1.25rem;
+  line-height: 1;
+  color: var(--header-bg-color);
+}
+
+/* Hover: 5% növekedés, középről, nem csúszik el */
+.welcome-hero__btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.25);
+}
+
+/* focus – billentyűzetbarát */
+.welcome-hero__btn:focus-visible {
+  outline: 3px solid rgba(14, 165, 233, 0.55);
+  outline-offset: 4px;
+}
+
+
+/* About – gombok konténer */
+.about-actions {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 4rem;
+}
+
+/* Vissza gomb – CTA-hoz illő “pill” stílus */
+.about-back-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+
+  padding: 0.75rem 1.05rem;
+  border-radius: 999px;
+
+  text-decoration: none;
+  cursor: pointer;
+  font-size: var(--btn-font-size);
+  font-weight: 900;
+  letter-spacing: 0.02em;
+
+  color: var(--header-bg-color);
+  background: var(--shield-border);
+  border: 2px solid var(--shield-border);
+
+  box-shadow: 0 12px 18px rgba(0, 0, 0, 0.5);
+
+  transform: translateZ(0);
+  /* apró “anti-jitter” */
+  transition: transform 160ms ease, box-shadow 160ms ease, background-color 160ms ease;
+}
+
+/* ikon */
+.about-back-btn i {
+  font-size: 1.25rem;
+  line-height: 1;
+  color: var(--header-bg-color);
+}
+
+/* Hover: finom emelés + 5% nagyítás (középről nő) */
+.about-back-btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.35);
+}
+
+/* Aktív kattintás: “lenyomás” érzet */
+.about-back-btn:active {
+  transform: scale(0.98);
+}
+
+/* Billentyűzet fókusz: jól látható, de nem rondít */
+.about-back-btn:focus-visible {
+  outline: none;
+  box-shadow:
+    0 12px 18px rgba(0, 0, 0, 0.45),
+    0 0 0 4px rgba(240, 208, 62, 0.25);
+}
+
+/* Mobil: kicsit nagyobb tapp area, ha kell */
+@media (max-width: 420px) {
+  .about-back-btn {
+    width: 100%;
+    max-width: 22rem;
+  }
+}
+
+
+/* =========================================================
+   PC layout – maradhat egyszerűen 1 oszlopos itt is
+   (ha később kell info rész, vissza lehet tenni grid-area-kat)
+   ========================================================= */
+
+@media (min-width: 992px) {
+  .intro-header {
+    font-size: var(--section-heading-size-pc);
+  }
+
+  .welcome-hero {
+    padding: 1rem 0 1.25rem;
+  }
+
+
+}
+
+
+/* =========================================================
+   ABOUT / Bemutatkozás – szövegblokk “életre keltése”
+   Csak: welcome-message, section-content, justified, description
+   ========================================================= */
+
+/* A teljes szöveg-rész kapjon egy finom, modern "card" keretet */
+.welcome-message.section-content {
+
+  padding: clamp(1rem, 3.2vw, 1.75rem);
+
+  border-radius: 18px;
+  border: 2px solid rgba(91, 161, 210, 0.28);
+
+  background: linear-gradient(135deg,
+      rgba(14, 165, 233, 0.06),
+      rgba(240, 208, 62, 0.06));
+
+  box-shadow:
+    0 18px 28px rgba(0, 0, 0, 0.08),
+    0 0 0 6px rgba(14, 165, 233, 0.06);
+
+  position: relative;
+  overflow: hidden;
+}
+
+/* Finom dísz-glow sarokban (nem zavaró, csak “élet”) */
+.welcome-message.section-content::before {
+  content: "";
+  position: absolute;
+  inset: -45% -45% auto auto;
+  width: 420px;
+  height: 420px;
+  background: radial-gradient(circle,
+      rgba(240, 208, 62, 0.22),
+      rgba(240, 208, 62, 0.00) 70%);
+  pointer-events: none;
+}
+
+/* A tényleges szöveg doboza: olvashatóság + “paper” érzet */
+.welcome-message .justified.description {
+  position: relative;
+  /* a pseudo-elemek fölé kerüljön */
+  z-index: 1;
+
+  padding: clamp(1rem, 2.6vw, 1.5rem);
+
+  /* tipó / olvasás */
+  color: var(--text);
+  font-weight: 600;
+  font-size: var(--listed-service-list-fontsize);
+  line-height: 1.75;
+
+  /* tördelés/olvasás minőség */
+  text-align: justify;
+  hyphens: auto;
+  /* hu-HU lang mellett szépen elválaszt */
+  text-justify: inter-word;
+  text-wrap: pretty;
+}
+
+
+
+/* A <strong> kiemelés legyen “minősítő irat” jellegű badge */
+.welcome-message .description strong {
+  font-weight: 900;
+  color: var(--header-bg-color);
+
+  padding: 0.1rem 0.45rem;
+  border-radius: 0.55rem;
+
+  background: rgba(240, 208, 62, 0.55);
+  border: 1px solid rgba(240, 208, 62, 0.95);
+
+  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.08);
+}
+
+/* Mobilon se legyen túl “tömör” */
+@media (max-width: 420px) {
+  .welcome-message.section-content {
+    padding: 1rem;
+  }
+
+  .welcome-message .justified.description {
+    padding: 1rem;
+    line-height: 1.7;
+  }
+}
+
+
+/* =========================================================
+   ABOUT – kártyás szövegblokkok (br helyett)
+   ========================================================= */
+
+.welcome-message .about-cards {
+  /* a .justified.description-ból örököl tipót, csak layoutot adunk */
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+
+  /* a korábbi drop-cap float/first-letter ne zavarja a kártyákat */
+  border-left: none;
+  padding: 0;
+  /* a wrapper ne legyen “dupla doboz” */
+  background: none;
+  box-shadow: none;
+}
+
+/* Egy-egy bekezdés mint mini-kártya */
+.welcome-message .about-card {
+  border-radius: 16px;
+  padding: clamp(0.95rem, 2.6vw, 1.2rem);
+
+  background: rgba(255, 255, 255, 0.78);
+  border: 1px solid rgba(107, 114, 128, 0.20);
+
+  box-shadow: 0 10px 18px rgba(0, 0, 0, 0.06);
+
+  /* tipó olvashatóság */
+  color: var(--text);
+  font-weight: 600;
+  font-size: clamp(1.05rem, 2.2vw, 1.25rem);
+  line-height: 1.75;
+
+  /* finom bal akcent */
+  position: relative;
+  overflow: hidden;
+}
+
+.welcome-message .about-card::before {
+  content: "";
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 5px;
+  background: rgba(91, 161, 210, 0.65);
+}
+
+/* Kicsi “élet” hoverre – nem kötelező, de jól áll */
+@media (hover: hover) {
+  .welcome-message .about-card:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 14px 22px rgba(0, 0, 0, 0.08);
+  }
+}
+
+/* A strong maradhat badge jellegű (ha már volt korábban), itt biztosítjuk a konzisztenciát */
+.welcome-message .about-card strong {
+  font-weight: 900;
+  color: var(--header-bg-color);
+
+  padding: 0.1rem 0.45rem;
+  border-radius: 0.55rem;
+
+  background: rgba(240, 208, 62, 0.55);
+  border: 1px solid rgba(240, 208, 62, 0.95);
+
+  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.08);
+}

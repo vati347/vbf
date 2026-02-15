@@ -1,0 +1,259 @@
+/* Contact oldal (email.css) – csak ehhez az oldalhoz.
+   Cél: tiszta grid/flex layout, stabil hover (nincs scrollbar-ugrás),
+   és nincs "about" stílusoktól függés. */
+
+.page--contact .contact {
+  margin-top: 2rem;
+}
+
+/* A .heading globálisan inline-flex; itt nem írjuk felül.
+   Egy wrapperben középre igazítjuk (inline elemekhez a text-align tökéletes). */
+.page--contact .contact-header {
+  text-align: center;
+}
+
+/* Oldal layout: tartalom + vissza gomb egy tiszta grid-ben */
+.page--contact .contact-layout {
+  display: grid;
+  gap: clamp(2rem, 4vw, 3rem);
+  padding-bottom: 1.75rem; /* ad "lélegzetet" a footer-es környezetben */
+}
+
+/* 2 oszlop PC-n, 1 oszlop mobilon */
+.page--contact .contact-grid {
+  display: grid;
+  gap: 2rem;
+}
+
+@media (min-width: 992px) {
+  .page--contact .contact-grid {
+    grid-template-columns: 1fr 1.1fr;
+    align-items: start;
+  }
+}
+
+/* Kártyák */
+.page--contact .contact-card {
+  background: #fff;
+  border-radius: 1.25rem;
+  border: 2px solid rgba(91, 161, 210, 0.25); /* --shield-border árnyalata */
+  box-shadow: 0 10px 26px rgba(0, 0, 0, 0.10);
+  overflow: hidden;
+}
+
+.page--contact .contact-card__header {
+  padding: 1.25rem 1.25rem 1rem;
+  border-bottom: 1px solid rgba(91, 161, 210, 0.22);
+  background: linear-gradient(
+    135deg,
+    rgba(35, 65, 118, 0.06),  /* --shield-inner-bg */
+    rgba(91, 161, 210, 0.05)  /* --shield-border */
+  );
+}
+
+.page--contact .contact-card__title {
+  margin: 0 0 0.35rem;
+  font-weight: 900;
+  color: var(--text);
+  letter-spacing: 0.01em;
+  font-size: clamp(1.25rem, 2.1vw, 1.55rem);
+}
+
+.page--contact .contact-card__subtitle {
+  margin: 0;
+  color: var(--texts);
+  font-weight: 500;
+  font-size: clamp(1rem, 1.6vw, 1.15rem);
+}
+
+.page--contact .contact-link {
+  color: var(--shield-border);
+  font-weight: 800;
+  text-decoration: none;
+}
+
+.page--contact .contact-link:hover {
+  text-decoration: underline;
+}
+
+/* INFO lista */
+.page--contact .contact-meta {
+  padding: 1.15rem 1.25rem;
+  display: grid;
+  gap: 0.85rem;
+}
+
+.page--contact .contact-meta__item {
+  display: grid;
+  gap: 0.2rem;
+  padding: 0.9rem 1rem;
+  border-radius: 1rem;
+  border: 1px solid rgba(91, 161, 210, 0.20);
+  background: rgba(254, 254, 254, 0.95);
+}
+
+.page--contact .contact-meta__label {
+  font-weight: 900;
+  color: var(--text);
+  font-size: 1rem;
+}
+
+.page--contact .contact-meta__value {
+  color: var(--texts);
+  font-weight: 500;
+  font-size: clamp(1rem, 1.6vw, 1.15rem);
+}
+
+.page--contact .contact-note {
+  margin: 0 1.25rem 1.25rem;
+  padding: 1rem;
+  border-radius: 1rem;
+  border: 1px dashed rgba(91, 161, 210, 0.35);
+  background: rgba(35, 65, 118, 0.03);
+  color: var(--texts);
+  font-size: 1rem;
+}
+
+/* FORM */
+.page--contact .contact-form {
+  padding: 1.15rem 1.25rem 1.25rem;
+  display: grid;
+  gap: 1rem;
+}
+
+.page--contact .contact-row {
+  display: grid;
+  gap: 1rem;
+}
+
+@media (min-width: 720px) {
+  .page--contact .contact-row {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.page--contact .contact-field {
+  display: grid;
+  gap: 0.45rem;
+}
+
+.page--contact .contact-field__label {
+  font-weight: 900;
+  color: var(--text);
+  letter-spacing: 0.01em;
+  font-size: 1rem;
+}
+
+.page--contact .contact-field__control {
+  width: 100%;
+  padding: 0.9rem 1rem;
+  border-radius: 1rem;
+  border: 2px solid rgba(91, 161, 210, 0.25);
+  background: #fff;
+  color: var(--text);
+  font-family: inherit;
+  font-size: clamp(1rem, 1.6vw, 1.15rem);
+  outline: none;
+  transition: box-shadow 120ms ease, border-color 120ms ease;
+}
+
+.page--contact .contact-field__control:focus {
+  border-color: rgba(240, 208, 62, 0.95); /* --tcontact-focus */
+  box-shadow: 0 0 0 5px rgba(240, 208, 62, 0.20);
+}
+
+.page--contact .contact-field__control::placeholder {
+  color: rgba(107, 114, 128, 0.70);
+}
+
+/* Gombok (űrlap) – mindig egymás alatt, teljes szélesség */
+.page--contact .contact-actions {
+  display: grid;
+  gap: 0.75rem;
+  margin-top: 0.2rem;
+  grid-template-columns: 1fr;
+}
+
+/* Ezek a gombok már a tokenekre támaszkodnak (stabil border, stabil hover) */
+.page--contact .contact-btn {
+  width: 100%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+
+  padding: 0.95rem 1.15rem;
+  border-radius: 999px;
+
+  border: 2px solid transparent; /* ✅ fix border -> hover nem változtat layoutot */
+  cursor: pointer;
+
+  font-weight: 900;
+  font-size: var(--btn-font-size);
+  line-height: 1;
+
+  color: var(--tcontact-text);
+  background: var(--tcontact-bg);
+
+  box-shadow: 0 10px 22px rgba(0, 0, 0, 0.18);
+  text-decoration: none;
+
+  transition: background-color 140ms ease, box-shadow 140ms ease, transform 90ms ease;
+}
+
+.page--contact .contact-btn:hover {
+  background: var(--tcontact-hover-bg);
+  transform: translateY(-1px);
+}
+
+.page--contact .contact-btn:active {
+  background: var(--tcontact-active-bg);
+  transform: translateY(0);
+}
+
+.page--contact .contact-btn--ghost {
+  background: #fff;
+  color: var(--shield-inner-bg);
+  border-color: rgba(91, 161, 210, 0.35);
+  box-shadow: none;
+}
+
+.page--contact .contact-btn--ghost:hover {
+  background: rgba(35, 65, 118, 0.04);
+}
+
+/* Kontakt help szöveg */
+.page--contact .contact-help {
+  margin: 0.25rem 0 0;
+  color: var(--texts);
+  font-weight: 500;
+  font-size: 1rem;
+}
+
+/* Honeypot rejtés */
+.page--contact .hp {
+  position: absolute !important;
+  left: -9999px !important;
+  top: auto !important;
+  width: 1px !important;
+  height: 1px !important;
+  overflow: hidden !important;
+}
+
+/* ✅ Vissza gomb blokk: külön, contact-specifikus */
+.page--contact .contact-nav {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.page--contact .contact-nav__back {
+  inline-size: min(22rem, 100%);
+  /* extra stabilitás: ne mozogjon hoverre (ha bárhol örökölne valamit) */
+  transform: none;
+}
+
+.page--contact .contact-nav__back:hover,
+.page--contact .contact-nav__back:active {
+  transform: none;
+}

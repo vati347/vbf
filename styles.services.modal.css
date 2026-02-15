@@ -1,0 +1,259 @@
+/* =========================================================
+   Bootstrap-mentes modal (overlay + dialog)
+   - fade háttér
+   - scale+fade dialog
+   - megtartja a meglévő "services-modal__*" tipót/palettát
+   ========================================================= */
+
+/* Scroll lock amikor modal nyitva */
+body.modal-open {
+    overflow: hidden;
+}
+
+/* Overlay */
+.services-modal-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+
+    display: grid;
+    place-items: center;
+
+    padding: 1rem;
+
+    background: rgba(0, 0, 0, 0.55);
+    backdrop-filter: blur(3px);
+
+    opacity: 0;
+    pointer-events: none;
+
+    transition: opacity 220ms ease;
+}
+
+/* Nyitott állapot */
+.services-modal-overlay.is-open {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+/* Dialog */
+.services-modal-dialog {
+    width: min(920px, 100%);
+    max-height: min(85vh, 820px);
+
+    overflow: auto;
+    -webkit-overflow-scrolling: touch;
+
+    border-radius: 18px;
+    border: 3px solid rgba(91, 161, 210, 0.9);
+    overflow: hidden;
+
+    background: linear-gradient(18deg, rgb(240, 208, 62), rgb(91, 161, 210));
+
+    box-shadow:
+        0 24px 60px rgba(0, 0, 0, 0.35),
+        0 0 0 6px rgba(14, 165, 233, 0.06);
+
+    transform: translateY(8px) scale(0.98);
+    opacity: 0;
+
+    transition: transform 220ms cubic-bezier(.2, .8, .2, 1), opacity 220ms ease;
+    outline: none;
+}
+
+/* dialog anim nyitva */
+.services-modal-overlay.is-open .services-modal-dialog {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+}
+
+/* Header/Body/Footer: a meglévő stílusokhoz igazítva */
+.services-modal__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.75rem;
+
+    padding: 0.95rem 1.1rem;
+    border-bottom: 2px solid rgba(107, 114, 128, 0.22);
+    background: rgba(240, 208, 62, 0.75)
+}
+
+.services-modal__title {
+    margin: 0;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.65rem;
+
+    color: var(--services-heading);
+    font-weight: 900;
+    letter-spacing: 0.02em;
+    font-size: var(--desc-fontsize);
+}
+
+.services-modal__title i {
+    color: var(--services-i-lightning-fill);
+    filter: drop-shadow(1px 2px 2px rgba(0, 0, 0, 0.12));
+}
+
+/* X gomb */
+.services-modal__x {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 42px;
+    height: 42px;
+
+    border-radius: 999px;
+    border: 2px solid rgba(107, 114, 128, 0.22);
+    background: rgba(255, 255, 255, 0.75);
+
+    cursor: pointer;
+}
+
+.services-modal__x i {
+    font-size: 1.25rem;
+    color: var(--services-heading);
+    opacity: 0.9;
+}
+
+.services-modal__x:focus-visible {
+    outline: 3px solid rgba(14, 165, 233, 0.55);
+    outline-offset: 3px;
+}
+
+.services-modal__body {
+    padding: 1.1rem 1.1rem 1rem;
+    background: rgba(255, 255, 255, 0.65);
+}
+
+/* A meglévő lead/subtitle/list stílusaid maradhatnak.
+   Ha nálad már definiálva vannak, ezek nem zavarják. */
+
+.services-modal__footer {
+    position: relative;
+    padding: 0.95rem 1.1rem;
+    border-top: 2px solid rgba(107, 114, 128, 0.22);
+    background: rgba(255, 255, 255, 0.75);
+
+    display: flex;
+    justify-content: center;
+    gap: 0.75rem;
+}
+
+/* --- ÚJ: Modal skin, hogy illeszkedjen a honlap stílusához --- */
+.services-modal {
+  border-radius: 18px;
+  border: 3px solid rgba(91, 161, 210, 0.9);
+  overflow: hidden;
+
+}
+
+.services-modal__header {
+  border-bottom: 2px solid rgba(107, 114, 128, 0.22);
+  background: rgba(255, 255, 255, 0.75);
+}
+
+.services-modal__header .modal-title {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.65rem;
+
+  color: var(--services-heading);
+  font-weight: 900;
+  letter-spacing: 0.02em;
+}
+
+.services-modal__header .modal-title i {
+  color: var(--services-i-lightning-fill);
+  filter: drop-shadow(1px 2px 2px rgba(0, 0, 0, 0.12));
+}
+
+.services-modal__body {
+  background: rgba(255, 255, 255, 0.65);
+}
+
+.services-modal__lead {
+  margin: 0 auto 1.25rem;
+  max-width: 52rem;
+
+  color: var(--common-description-color);
+  font-weight: 650;
+  line-height: 1.55;
+  font-size: var(--listed-service-list-fontsize);
+  text-align: center;
+}
+
+.services-modal__subtitle {
+  margin-top: 0.45rem;
+  font-weight: 900;
+  color: var(--services-heading);
+  letter-spacing: 0.01em;
+  text-align: center;
+  font-size: var(--listed-service-list-fontsize);
+}
+
+.services-modal__list {
+  list-style: none;
+  padding: 0;
+  margin: 0.85rem auto 0;
+  width: min(100%, 46rem);
+
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+
+  text-align: left;
+}
+
+.services-modal__list li {
+  display: grid;
+  grid-template-columns: 2.1rem 1fr;
+  column-gap: 0.75rem;
+  align-items: center;
+
+  padding: 0.85rem 0.95rem;
+  border-radius: 12px;
+
+  background: rgba(255, 255, 255, 0.35);
+  border: 1px solid rgba(91, 161, 210, 0.35);
+  backdrop-filter: blur(6px);
+}
+
+.services-modal__list li i {
+  font-size: 1.75rem;
+  line-height: 1;
+  color: var(--services-i-lightning-fill);
+  filter: drop-shadow(1px 1px 1px rgba(0, 0, 0, 0.18));
+}
+
+.services-modal__list li span {
+  color: var(--common-description-color);
+  font-weight: 750;
+  line-height: 1.4;
+  font-size: var(--listed-service-list-fontsize);
+}
+
+.services-modal__footer {
+  border-top: 2px solid rgba(107, 114, 128, 0.22);
+  background: rgba(255, 255, 255, 0.75);
+}
+
+.services-modal__close {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+
+  padding: 0.7rem 1rem;
+  border-radius: 999px;
+
+  border: 2px solid rgba(240, 208, 62, 0.95);
+  background: rgba(240, 208, 62, 0.75);
+
+  color: var(--header-bg-color);
+  font-weight: 700;
+  cursor: pointer;
+  font-size: var(--modal-btn-font-size);
+}

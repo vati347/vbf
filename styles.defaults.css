@@ -1,0 +1,312 @@
+:root {
+  /* TEMPLATE: Shield based */
+  --mainbg: #fefefe;
+  --text: #1c1f26;
+  --texts: #6b7280;
+  --shield-border: #5ba1d2;
+  --shield-innerline: #fefefe;
+  --shield-inner-bg: #234176;
+  --shield-inner-bg-darker: #192f55;
+  --shield-tick-outline: var(--shield-innerline);
+  --shield-tick-fill: var(--shield-border);
+  --shield-lightning-fill: #f0d03e;
+  --shield-lightning-corner: var(--shield-lightning-fill);
+  --lighter-blue: #0ea5e9;
+
+  --tcontact-bg: var(--shield-inner-bg);
+  /* #234176 */
+  --tcontact-text: #ffffff;
+  --tcontact-hover-bg: #2D5291;
+  --tcontact-active-bg: var(--shield-inner-bg-darker);
+  /* #192f55 */
+  --tcontact-focus: var(--shield-lightning-fill);
+  /* #f0d03e */
+
+  /* Az oldal fő háttérszíne */
+  --main-bg-color: var(--mainbg);
+
+  /* Fejlécek háttérszíne: Bemutatkozás, Szolgáltatások, Elérhetőségek */
+  --heading-bg-color: var(--texts);
+
+  /* Legtöbbet látható szöveg színe */
+  --common-description-color: var(--texts);
+
+  /* Header és Navbar */
+  /* Navigációs sáv háttér: */
+  --header-bg-color: rgba(30, 38, 46, 1);
+  --footer-bg-color: var(--header-bg-color);
+
+  /* Navigációs sáv alsó határvonal árnyékvetülés: */
+  --header-box-shadow-underline: var(--shield-innerline);
+
+  /* Navigációs sáv alsó határvonal színe: */
+  --header-border-bottom: rgba(0, 0, 0, 0.4);
+  --footer-border-top: rgba(0, 0, 0, 0.4);
+
+  --navigation-link-color: var(--shield-border);
+  --navigation-link-active-color: var(--mainbg);
+  --navigation-link-hover-color: var(--shield-lightning-fill);
+
+  --hamburger-icon-color: var(--lighter-blue);
+  --mobile-menu-border-color: var(--shield-innerline);
+
+  --hamburger-icon-clicked-glow:
+    0 0 5px rgba(0, 204, 255, 1),
+    0 0 10px rgba(0, 204, 255, 0.9),
+    0 0 20px rgba(0, 204, 255, 0.8),
+    0 0 40px rgba(0, 204, 255, 0.6);
+
+  /* Services */
+  --services-main-heading: #6b7280;
+  --services-logo: rgb(141, 97, 91);
+  --services-heading: #6b7280;
+  --services-descr: #6b7280;
+
+  --services-i-list-icons: #329900;
+  --services-i-lightning-fill: #EAB308;
+
+  /* Contacts */
+  --contacts-name: #6b7280;
+  --contacts-name-underline: #6b7280;
+  --contacts-personal-info-text: #6b7280;
+
+  --section-heading-size-pc: 2rem;
+  --section-heading-size-m: 3rem;
+  --section-desc-size-pc: 1.5rem;
+  --section-desc-size-m: 2rem;
+
+  --contacts-yt-icon-color: #FF0000;
+  --contacts-yt-border-color: rgba(255, 0, 0, .35);
+
+  --contacts-tt-icon-color: #EE1D52;
+  --contacts-tt-border-color: rgba(238,29,82,.35);
+
+  --contacts-ig-icon-color: #E4405F;
+  --contacts-ig-border-color: rgba(228,64,95,.35);
+
+  --contacts-fb-icon-color: #1877F2;
+  --contacts-fb-border-color: rgba(24,119,242,.35);
+
+  --desc-fontsize: clamp(1.5rem, 3.3vw, 1.69rem);
+  --cont-fontsize: clamp(1.7rem, 4vw, 2rem);
+  --wide-range-font-size: clamp(1rem, 4vw, 2rem);
+  --heading-font-size: clamp(2rem, 9vw, 3rem);
+  --listed-service-heading-fontsize: clamp(2rem, 5.5vw, 2.6rem);
+  --listed-service-list-fontsize: clamp(1.3rem, 3.2vw, 1.7rem);
+  --listed-service-icon-size: clamp(12.5rem, 22vw, 20rem);
+  --listed-service-heading-underline: clamp(20rem, 25vw, 30rem);
+  --contacts-heading-name-fontsize: clamp(1.7rem, 3.25vw, 2rem);
+
+  --spec-font-size-1: clamp(1.75rem, 4.5vw, 2.25rem);
+  --modal-btn-font-size: clamp(1rem, 1.5vw, 1.5rem);
+  --btn-font-size: clamp(1.25rem, 1.9vw, 1.6rem);
+
+  --header-max-height: 200px;
+
+  /* ✅ ÚJ: egységes szekció-fejléc (Services pill stílus) */
+  --section-heading-pill-padding: 1rem 2rem;
+  --section-heading-pill-radius: 999px;
+  --section-heading-pill-color: #fff;
+  --section-heading-pill-border: rgba(91, 161, 210, 0.75);
+  --section-heading-pill-shadow:
+    0 14px 22px rgba(0, 0, 0, 0.18),
+    0 0 0 6px rgba(14, 165, 233, 0.08);
+  --section-heading-pill-bg: linear-gradient(
+    135deg,
+    rgba(35, 65, 118, 0.96),
+    rgba(25, 47, 85, 0.96)
+  );
+}
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  overflow-x: hidden;
+  background-color: var(--main-bg-color);
+  font-family: 'Montserrat', Helvetica, Arial, Lucida, sans-serif;
+  color: var(--texts);
+  line-height: 1.5;
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  margin-bottom: calc(60px + 1.5rem);
+  z-index: 1;
+}
+
+footer {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  line-height: 60px;
+  border-top: 2px solid var(--footer-border-top);
+  background: var(--footer-bg-color);
+  z-index: 2;
+}
+
+footer div {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  padding-left: 2rem;
+  padding-right: 2rem;
+}
+
+footer div p {
+  color: var(--common-description-color);
+  margin: 0;
+  font-size: 1rem;
+}
+
+ul li {
+  list-style: none;
+}
+
+ul li a {
+  text-decoration: none;
+}
+
+/* =========================
+   ✅ EGYSÉGES SECTION HEADING
+   ========================= */
+
+.heading {
+  /* korábbi band-stílus helyett pill/badge */
+  font-weight: 900;
+  letter-spacing: 0.02em;
+  line-height: 1.15;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+
+  width: fit-content;
+  max-width: calc(100% - 2rem);
+  margin: 0 auto 2rem;
+
+  padding: var(--section-heading-pill-padding);
+  border-radius: var(--section-heading-pill-radius);
+
+  color: var(--section-heading-pill-color);
+  background: var(--section-heading-pill-bg);
+  border: 2px solid var(--section-heading-pill-border);
+
+  box-shadow: var(--section-heading-pill-shadow);
+  background-clip: padding-box;
+
+  font-size: var(--heading-font-size);
+}
+
+/* régi section .heading flex-os “sáv” logika kiiktatása */
+section .heading {
+  margin-bottom: 2rem;       /* egységes */
+  gap: 0;                    /* ne “táguljon” */
+  flex-direction: row;       /* biztonság */
+}
+
+/* a description maradhat */
+.description {
+  color: var(--common-description-color);
+  font-weight: 500;
+}
+
+.centered {
+  text-align: center;
+}
+
+.justified {
+  text-align: justify;
+}
+
+.grid-container {
+  display: flex;
+  flex: 1 1 450px;
+  flex-direction: column;
+  padding-bottom: 2rem;
+}
+
+.bgd-bxs-card {
+  box-shadow: 0 8px 32px var(--bxs-card-box-shadow);
+}
+
+section .description {
+  font-size: var(--desc-fontsize);
+}
+
+.phone-only {
+  display: block;
+  margin-top: 1rem;
+  margin-bottom: 2rem;
+  padding: 0 1rem;
+}
+
+span a {
+  text-decoration: none;
+  color: var(--main-bg-color);
+}
+
+section .section-content {
+  padding-left: 2rem;
+  padding-right: 2rem;
+}
+
+  .constant-margin {
+    margin-left: 5vw;
+    margin-right: 5vw;
+  }
+
+@media (max-width: 500px) {
+
+  html {
+    font-size: clamp(10px, 3vw, 16px);
+  }
+
+  footer div p {
+    font-size: clamp(0.5rem, 4vw, 1rem);
+  }
+
+}
+
+@media (min-width: 992px) {
+
+  .phone-only {
+    display: none;
+  }
+
+  /* PC-n egységesebb spacing */
+  section .heading {
+    margin-bottom: 1.25rem;
+  }
+
+  .constant-margin {
+    margin-left: 10vw;
+    margin-right: 10vw;
+  }
+
+  section {
+    margin-top: 2rem;
+  }
+
+}
+
+@media (min-width: 1666px) {
+  .constant-margin {
+    margin-left: 20vw;
+    margin-right: 20vw;
+  }
+}
