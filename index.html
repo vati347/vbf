@@ -40,6 +40,40 @@
 
 <body>
 
+    <!-- FIX HEADER / NAVBAR -->
+    <header class="site-header" role="banner">
+        <div class="site-header__inner section-content">
+            <!-- BAL: Email -->
+            <div class="site-header__side site-header__side--left">
+                <a class="site-header__contact" href="mailto:info@vbfplus.hu" aria-label="Email: info@vbfplus.hu">
+                    info@vbfplus.hu
+                </a>
+            </div>
+
+            <!-- KÖZÉP: Logo (az offerből felköltöztetve) -->
+            <div class="site-header__center">
+                <a class="offer__logo-link site-header__logo-link" href="./index.html" aria-label="Főoldal">
+                    <img class="offer__logo site-header__logo" src="./images/newbg.png" alt="Logo" loading="lazy">
+                </a>
+            </div>
+
+            <!-- JOBB: Telefon -->
+            <div class="site-header__side site-header__side--right">
+                <a class="site-header__contact" href="tel:+36123456789" aria-label="Telefon: +36 1 234 5678">
+                    +36 1 234 5678
+                </a>
+            </div>
+        </div>
+    </header>
+    
+    <div class="debug-switch" role="navigation" aria-label="Debug navigáció">
+        <div class="debug-switch__inner section-content">
+            <a class="debug-switch__btn debug-switch__btn--active" href="./index.html" aria-label="Ugrás: index.html">index.html</a>
+            <a class="debug-switch__btn" href="./index2.html" aria-label="Ugrás: index2.html"
+                aria-current="page">index2.html</a>
+        </div>
+    </div>
+
     <main id="content" tabindex="-1">
         <div class="grid-container">
 
@@ -47,12 +81,8 @@
 
                 <div class="offer__inner section-content">
 
-                    <!-- BAL: Logo -->
-                    <a class="offer__logo-link" href="./index.html" aria-label="Főoldal">
-                        <img class="offer__logo" src="./images/newbg.png" alt="Logo" loading="lazy">
-                    </a>
+                    <!-- LOGO kikerült innen (a headerben van) -->
 
-                    <!-- JOBB: CTA + alatta DUPLIKÁLT contacts (social nélkül) -->
                     <div class="offer__right">
 
                         <div class="offer__cta-pos">
@@ -61,7 +91,6 @@
                                 Kérjen Ajánlatot Itt Lakóingatlan Villamos Biztonsági Felülvizsgálatra
                             </a>
                         </div>
-
 
                     </div>
 
