@@ -33,8 +33,16 @@
 
   /* Header és Navbar */
   /* Navigációs sáv háttér: */
-  --header-bg-color: rgba(30, 38, 46, 1);
+  --header-bg-color: linear-gradient(45deg, rgb(73, 71, 67), rgb(119, 109, 103));
+  --welcome-about-btn: rgba(30, 38, 46, 1);
   --footer-bg-color: var(--header-bg-color);
+
+
+  /* Footer maradhat a régi sötét (ha nem akarod világosítani a footert is) */
+  --footer-bg-color: rgba(30, 38, 46, 1);
+
+
+
 
   /* Navigációs sáv alsó határvonal árnyékvetülés: */
   --header-box-shadow-underline: var(--shield-innerline);
@@ -79,13 +87,13 @@
   --contacts-yt-border-color: rgba(255, 0, 0, .35);
 
   --contacts-tt-icon-color: #EE1D52;
-  --contacts-tt-border-color: rgba(238,29,82,.35);
+  --contacts-tt-border-color: rgba(238, 29, 82, .35);
 
   --contacts-ig-icon-color: #E4405F;
-  --contacts-ig-border-color: rgba(228,64,95,.35);
+  --contacts-ig-border-color: rgba(228, 64, 95, .35);
 
   --contacts-fb-icon-color: #1877F2;
-  --contacts-fb-border-color: rgba(24,119,242,.35);
+  --contacts-fb-border-color: rgba(24, 119, 242, .35);
 
   --desc-fontsize: clamp(1.5rem, 3.3vw, 1.69rem);
   --cont-fontsize: clamp(1.7rem, 4vw, 2rem);
@@ -111,11 +119,9 @@
   --section-heading-pill-shadow:
     0 14px 22px rgba(0, 0, 0, 0.18),
     0 0 0 6px rgba(14, 165, 233, 0.08);
-  --section-heading-pill-bg: linear-gradient(
-    135deg,
-    rgba(35, 65, 118, 0.96),
-    rgba(25, 47, 85, 0.96)
-  );
+  --section-heading-pill-bg: linear-gradient(135deg,
+      rgba(35, 65, 118, 0.96),
+      rgba(25, 47, 85, 0.96));
 }
 
 *,
@@ -214,9 +220,12 @@ ul li a {
 
 /* régi section .heading flex-os “sáv” logika kiiktatása */
 section .heading {
-  margin-bottom: 2rem;       /* egységes */
-  gap: 0;                    /* ne “táguljon” */
-  flex-direction: row;       /* biztonság */
+  margin-bottom: 2rem;
+  /* egységes */
+  gap: 0;
+  /* ne “táguljon” */
+  flex-direction: row;
+  /* biztonság */
 }
 
 /* a description maradhat */
@@ -265,10 +274,10 @@ section .section-content {
   padding-right: 2rem;
 }
 
-  .constant-margin {
-    margin-left: 5vw;
-    margin-right: 5vw;
-  }
+.constant-margin {
+  margin-left: 5vw;
+  margin-right: 5vw;
+}
 
 @media (max-width: 500px) {
 

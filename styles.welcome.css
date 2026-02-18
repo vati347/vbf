@@ -108,7 +108,7 @@
   font-weight: 900;
   letter-spacing: 0.02em;
 
-  color: var(--header-bg-color);
+  color: var(--welcome-about-btn);
   background: var(--shield-border);
   border: 2px solid var(--shield-border);
 

@@ -21,6 +21,9 @@
     /* fix magasság jelleg clamp-pel (minden méreten stabil) */
     min-height: clamp(64px, 7.5vw, 92px);
 
+    --site-header-h: calc(clamp(64px, 7.5vw, 92px) + 20px);
+    min-height: var(--site-header-h);
+
     border-bottom: 2px solid var(--header-border-bottom);
     box-shadow:
         0 2px 0 var(--header-box-shadow-underline),
@@ -66,7 +69,61 @@
     align-items: center;
     justify-content: center;
     min-width: 0;
+    gap: clamp(0.45rem, 1.2vw, 1rem);
 }
+
+/* Két szöveg */
+.site-header__logo-wing {
+    display: inline-flex;
+    align-items: center;
+    min-width: 0;
+
+    /* ✅ a logó felé zárás */
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+
+    /* ✅ testes betű */
+    font-family: 'Montserrat', Helvetica, Arial, Lucida, sans-serif;
+    font-weight: 950;
+    letter-spacing: clamp(0.02em, 0.12vw, 0.08em);
+    line-height: 1;
+
+    /* ✅ clamp + calc: kicsit reagál a viewportra */
+    font-size: clamp(0.9rem, calc(0.55rem + 0.95vw), 1.25rem);
+
+    /* ✅ sárga / arany gradiens (szép, kontrasztos a sötét headeren) */
+    background: linear-gradient(90deg,
+            rgba(240, 208, 62, 0.92),
+            rgba(255, 230, 120, 0.98),
+            rgba(240, 208, 62, 0.92));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+
+    /* kis "fény" / kontraszt */
+    filter: drop-shadow(0 1px 0 rgba(0, 0, 0, 0.35));
+}
+
+/* bal oldali: jobbra igazítva, logó felé */
+.site-header__logo-wing--left {
+    text-align: right;
+    justify-content: flex-end;
+}
+
+/* jobb oldali: balra igazítva, logó felé */
+.site-header__logo-wing--right {
+    text-align: left;
+    justify-content: flex-start;
+}
+
+/* ✅ Tabletig látszik, telefonon eltűnik */
+@media (max-width: 880px) {
+    .site-header__logo-wing {
+        display: none;
+    }
+}
+
 
 /* =========================================================
    CONTACT LINK (email/telefon) – figyelemfelkeltőbb "badge"
@@ -184,7 +241,7 @@
     display: block;
     object-fit: contain;
 
-    max-height: calc(clamp(64px, 7.5vw, 92px) - 18px);
+    max-height: calc(var(--site-header-h) - 18px);
     width: auto;
 
     max-width: clamp(140px, 26vw, 340px);
