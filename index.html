@@ -5,19 +5,18 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description"
-        content="Villanyszerelés városi környezetben – gyors hibaelhárítás, új szerelések, karbantartás. Kapcsolat: +36 30 123 4567 · vassgabor@electroleda.hu">
+        content="Villanyszerelés városi környezetben - gyors hibaelhárítás, új szerelések, karbantartás. Kapcsolat: +36202969591 · info@vbfplus.hu">
     <meta name="theme-color" content="#0EA5E9">
     <link rel="icon" href="favicon.ico">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <meta property="og:title" content="Villanyszerelés – Vass Gábor E. V.">
-    <meta property="og:description"
-        content="Gyors, megbízható villanyszerelő városi környezetben. Hívás: +36 30 123 4567">
+    <meta property="og:title" content="Villanyszerelés - Vass Gábor E. V.">
+    <meta property="og:description" content="Gyors, megbízható villanyszerelő városi környezetben. Hívás: +36202969591">
     <meta property="og:type" content="website">
     <meta property="og:image" content="images/plogo.png">
     <meta property="og:locale" content="hu_HU">
     <meta name="twitter:card" content="summary">
-    <title>Villanyszerelés – Vass Gábor E. V.</title>
+    <title>Villanyszerelés - Vass Gábor E. V.</title>
     <link
         href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap&family=Roboto&family=Inter&display=swap&family=Montserrat:wght@500;600;700;800&display=swap"
         rel="stylesheet">
@@ -35,22 +34,27 @@
     <link rel="stylesheet" href="style_svg_logo.css">
 
     <script
-        type="application/ld+json">{"@context": "https://schema.org", "@type": "Electrician", "name": "Vass Gábor E. V.", "email": "mailto:vassgabor@electroleda.hu", "telephone": "+36 30 123 4567"}</script>
+        type="application/ld+json">{"@context": "https://schema.org", "@type": "Villamos Biztonsági Felülvizsgáló", "name": "Vass Gábor E. V.", "email": "mailto:info@vbfplus.hu", "telephone": "+36202969591"}</script>
 </head>
 
 <body>
 
-    <!-- FIX HEADER / NAVBAR -->
     <header class="site-header" role="banner">
         <div class="site-header__inner section-content">
+
             <!-- BAL: Email -->
             <div class="site-header__side site-header__side--left">
-                <a class="site-header__contact" href="mailto:info@vbfplus.hu" aria-label="Email: info@vbfplus.hu">
-                    info@vbfplus.hu
+                <a class="site-header__contact site-header__contact--email" href="mailto:info@vbfplus.hu"
+                    aria-label="Email: info@vbfplus.hu">
+                    <span class="site-header__contact-icon" aria-hidden="true">
+                        <i class="bi bi-envelope-fill"></i>
+                    </span>
+                    <span class="site-header__contact-text">info@vbfplus.hu</span>
+                    <span class="site-header__contact-text__narrow">Email</span>
                 </a>
             </div>
 
-            <!-- KÖZÉP: Logo (az offerből felköltöztetve) -->
+            <!-- KÖZÉP: Logo -->
             <div class="site-header__center">
                 <a class="offer__logo-link site-header__logo-link" href="./index.html" aria-label="Főoldal">
                     <img class="offer__logo site-header__logo" src="./images/newbg.png" alt="Logo" loading="lazy">
@@ -59,20 +63,18 @@
 
             <!-- JOBB: Telefon -->
             <div class="site-header__side site-header__side--right">
-                <a class="site-header__contact" href="tel:+36123456789" aria-label="Telefon: +36 1 234 5678">
-                    +36 1 234 5678
+                <a class="site-header__contact site-header__contact--phone" href="tel:+36202969591"
+                    aria-label="Telefon: +36202969591">
+                    <span class="site-header__contact-icon" aria-hidden="true">
+                        <i class="bi bi-telephone-fill"></i>
+                    </span>
+                    <span class="site-header__contact-text">+36-20/296-9591</span>
+                    <span class="site-header__contact-text__narrow">Tel</span>
                 </a>
             </div>
+
         </div>
     </header>
-    
-    <div class="debug-switch" role="navigation" aria-label="Debug navigáció">
-        <div class="debug-switch__inner section-content">
-            <a class="debug-switch__btn debug-switch__btn--active" href="./index.html" aria-label="Ugrás: index.html">index.html</a>
-            <a class="debug-switch__btn" href="./index2.html" aria-label="Ugrás: index2.html"
-                aria-current="page">index2.html</a>
-        </div>
-    </div>
 
     <main id="content" tabindex="-1">
         <div class="grid-container">
@@ -85,11 +87,26 @@
 
                     <div class="offer__right">
 
-                        <div class="offer__cta-pos">
-                            <a class="offer__cta" href="kapcsolat.html"
+                        <!-- ✅ DESKTOP/TABLET: marad a hosszú piros CTA -->
+                        <div class="offer__cta-pos offer__cta-pos--desktop">
+                            <a class="offer__cta offer__cta--long" href="kapcsolat.html"
                                 aria-label="Kérjen Ajánlatot Itt Lakóingatlan Villamos Biztonsági Felülvizsgálatra">
                                 Kérjen Ajánlatot Itt Lakóingatlan Villamos Biztonsági Felülvizsgálatra
                             </a>
+                        </div>
+
+                        <!-- ✅ MOBILE (telefon): bordered box + caption + rövid CTA -->
+                        <div class="offer__box offer__box--mobile"
+                            aria-label="Lakóingatlan Villamos Biztonsági Felülvizsgálat">
+                            <div class="offer__box-caption">Lakóingatlan Villamos Biztonsági Felülvizsgálat</div>
+                            <div class="offer__box-subcaption">VBF</div>
+
+                            <div class="offer__cta-pos offer__cta-pos--mobile">
+                                <a class="offer__cta offer__cta--short" href="kapcsolat.html"
+                                    aria-label="Kérjen ajánlatot itt! (VBF)">
+                                    Kérjen Ajánlatot Itt!
+                                </a>
+                            </div>
                         </div>
 
                     </div>
@@ -168,7 +185,7 @@
                                         <i class="bi bi-file-earmark-text" aria-hidden="true"></i>
                                         <span class="service-feature-text">
                                             Jegyzőkönyv készítése a vonatkozó jogszabályok és szabványok alapján
-                                            (40/2017. (XII.4.) NGM rendelet, OTSZ – 54/2014. BM rendelet, MSZ HD 60364
+                                            (40/2017. (XII.4.) NGM rendelet, OTSZ - 54/2014. BM rendelet, MSZ HD 60364
                                             érintésvédelmi és tűzvédelmi követelmények), biztosítói és hatósági
                                             elvárásokhoz igazítva
                                         </span>
@@ -407,13 +424,14 @@
                                     Telefon
                                 </div>
 
-                                <a href="tel:+36301234567" class="mobile-tel contact-item__value">
-                                    +36-30/123-4567
+                                <a href="tel:+36202969591" class="mobile-tel contact-item__value">
+                                    +36-20/296-9591
                                 </a>
 
                                 <p class="desktop-tel contact-item__value">
-                                    +36-30/123-4567
+                                    +36-20/296-9591
                                 </p>
+
                             </div>
                         </div>
 
@@ -428,8 +446,8 @@
                                     E-mail
                                 </div>
 
-                                <a href="mailto:vassgabor@electroleda.hu" class="mobile-email contact-item__value">
-                                    vassgabor@&#8203;electroleda.hu
+                                <a href="mailto:info@vbfplus.hu" class="mobile-email contact-item__value">
+                                    info@&#8203;vbfplus.hu
                                 </a>
                             </div>
                         </div>
@@ -534,7 +552,7 @@
     <script src="scripts.js"></script>
     <script src="carousel.js"></script>
 
-    <a class="call-button" href="tel:+36301234567" aria-label="Hívás">
+    <a class="call-button" href="tel:+36202969591" aria-label="Hívás">
         <i class="bi bi-telephone-fill" aria-hidden="true"></i>
         <span>Hívás</span>
     </a>

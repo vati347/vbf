@@ -1,8 +1,9 @@
 /* =========================================================
    HEADER + OFFER (refaktor)
    - FIX magasságú header: bal email / közép logo / jobb telefon
-   - OFFER: CTA középen (logo már a headerben)
-   - INDEX2: debug switch + bordered CTA box (scoped)
+   - OFFER:
+     - PC/Tablet: hosszú piros CTA (alap)
+     - Telefon: bordered box + caption + rövid CTA (media query)
    ========================================================= */
 
 /* =========================================================
@@ -10,97 +11,160 @@
    ========================================================= */
 
 .site-header {
-  position: sticky;
-  top: 0;
-  z-index: 9998;
+    position: sticky;
+    top: 0;
+    z-index: 9998;
 
-  background: var(--header-bg-color);
-  color: var(--mainbg);
+    background: var(--header-bg-color);
+    color: var(--mainbg);
 
-  /* fix magasság jelleg clamp-pel (minden méreten stabil) */
-  min-height: clamp(64px, 7.5vw, 92px);
+    /* fix magasság jelleg clamp-pel (minden méreten stabil) */
+    min-height: clamp(64px, 7.5vw, 92px);
 
-  border-bottom: 2px solid var(--header-border-bottom);
-  box-shadow: 0 2px 0 var(--header-box-shadow-underline);
+    border-bottom: 2px solid var(--header-border-bottom);
+    box-shadow:
+        0 2px 0 var(--header-box-shadow-underline),
+        0 12px 26px rgba(0, 0, 0, 0.22);
 
-  /* ha valahol mégis túlcsordulna, ne rángassa a layoutot */
-  overflow: hidden;
+    /* ha valahol mégis túlcsordulna, ne rángassa a layoutot */
+    overflow: hidden;
 }
 
 /* belső 3 oszlopos elrendezés */
 .site-header__inner.section-content {
-  height: 100%;
-  min-height: inherit;
+    height: 100%;
+    min-height: inherit;
 
-  display: grid;
-  grid-template-columns: 1fr auto 1fr;
-  align-items: center;
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
 
-  /* védő padding, hogy ne érjenek a szélekhez */
-  padding: 0.5rem 1rem;
+    /* védő padding, hogy ne érjenek a szélekhez */
+    padding: 0.55rem;
 
-  gap: clamp(0.5rem, 2vw, 1.25rem);
+    gap: clamp(0.5rem, 2vw, 1.25rem);
 }
 
 /* bal/jobb oszlop: ellipszis védelem */
 .site-header__side {
-  min-width: 0;
-  display: flex;
-  align-items: center;
+    min-width: 0;
+    display: flex;
+    align-items: center;
 }
 
 .site-header__side--left {
-  justify-content: flex-start;
+    justify-content: flex-start;
 }
 
 .site-header__side--right {
-  justify-content: flex-end;
+    justify-content: flex-end;
 }
 
 /* közép: logo */
 .site-header__center {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  min-width: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 0;
 }
 
-/* kontakt link (email/telefon) */
+/* =========================================================
+   CONTACT LINK (email/telefon) – figyelemfelkeltőbb "badge"
+   ========================================================= */
+
 .site-header__contact {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.55rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
 
-  text-decoration: none;
-  color: var(--mainbg);
+    text-decoration: none;
+    color: var(--mainbg);
 
-  font-weight: 900;
-  letter-spacing: 0.01em;
-  line-height: 1.15;
+    font-weight: 950;
+    letter-spacing: 0.01em;
+    line-height: 1.1;
 
-  font-size: clamp(0.95rem, 1.35vw, 1.25rem);
+    font-size: clamp(0.95rem, 1.35vw, 1.15rem);
 
-  min-width: 0;
-  max-width: 100%;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
+    min-width: 0;
+    max-width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 
-  transform: translateZ(0);
-  transition: filter 160ms ease, transform 160ms ease;
+    padding: 0.5rem 0.8rem;
+    border-radius: 999px;
+
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(91, 161, 210, 0.35);
+
+    box-shadow:
+        0 10px 18px rgba(0, 0, 0, 0.16),
+        0 0 0 4px rgba(14, 165, 233, 0.06);
+
+    transform: translateZ(0);
+    transition: transform 160ms ease, filter 160ms ease, box-shadow 160ms ease, background-color 160ms ease;
+}
+
+.site-header__contact-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 2.05rem;
+    height: 2.05rem;
+    border-radius: 999px;
+
+    background: rgba(14, 165, 233, 0.14);
+    border: 1px solid rgba(14, 165, 233, 0.35);
+
+    flex: 0 0 auto;
+}
+
+.site-header__contact-icon i {
+    font-size: 1.05rem;
+    line-height: 1;
+    color: var(--shield-lightning-fill);
+}
+
+.site-header__contact-text {
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.site-header__contact-text__narrow {
+    display: none;
 }
 
 .site-header__contact:hover {
-  filter: brightness(1.08);
+    transform: translateY(-1px);
+    filter: brightness(1.06);
+    background: rgba(255, 255, 255, 0.10);
+    box-shadow:
+        0 14px 24px rgba(0, 0, 0, 0.20),
+        0 0 0 6px rgba(14, 165, 233, 0.09);
 }
 
 .site-header__contact:active {
-  transform: translateY(1px);
+    transform: translateY(0px);
+    filter: brightness(1.03);
 }
 
 .site-header__contact:focus-visible {
-  outline: 3px solid rgba(240, 208, 62, 0.45);
-  outline-offset: 4px;
+    outline: 3px solid rgba(240, 208, 62, 0.55);
+    outline-offset: 4px;
+}
+
+/* kis "prioritás" hangolás: telefon picit erősebb */
+.site-header__contact--phone .site-header__contact-icon {
+    background: rgba(240, 208, 62, 0.14);
+    border-color: rgba(240, 208, 62, 0.35);
+}
+
+.site-header__contact--phone .site-header__contact-icon i {
+    color: rgba(240, 208, 62, 0.98);
 }
 
 /* =========================================================
@@ -108,25 +172,25 @@
    ========================================================= */
 
 .site-header__logo-link.offer__logo-link {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
 
-  min-width: 0;
+    min-width: 0;
 }
 
 .site-header__logo.offer__logo {
-  display: block;
-  object-fit: contain;
+    display: block;
+    object-fit: contain;
 
-  max-height: calc(clamp(64px, 7.5vw, 92px) - 18px);
-  width: auto;
+    max-height: calc(clamp(64px, 7.5vw, 92px) - 18px);
+    width: auto;
 
-  max-width: clamp(140px, 26vw, 340px);
+    max-width: clamp(140px, 26vw, 340px);
 
-  height: auto;
-  aspect-ratio: auto;
+    height: auto;
+    aspect-ratio: auto;
 }
 
 /* =========================================================
@@ -134,112 +198,219 @@
    ========================================================= */
 
 .offer {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
 .offer__inner.section-content {
-  width: 100%;
+    width: 100%;
 
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 
-  gap: 1rem;
+    gap: 1rem;
 
-  padding-top: 1.25rem;
-  padding-bottom: 1.25rem;
+    padding-top: 1.25rem;
+    padding-bottom: 1.25rem;
 }
 
 /* ha bent maradna véletlenül az offer logo: ne borítsa */
 .offer__logo-link {
-  display: none;
+    display: none;
 }
 
 /* CTA oldal */
 .offer__right {
-  width: 100%;
-  min-width: 0;
+    width: 100%;
+    min-width: 0;
 
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
 /* CTA wrapper + lebegés */
 .offer__cta-pos {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-
-  animation: floatY_simple 3s ease-in-out infinite;
-  will-change: transform;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
 }
 
 /* CTA gomb */
 .offer__cta {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
 
-  padding: 0.95rem 1.35rem;
-  border-radius: 9999px;
+    padding: 0.95rem 1.35rem;
+    border-radius: 9999px;
 
-  background: #ef4444;
-  color: #ffffff;
+    background: #ef4444;
+    color: #ffffff;
 
-  font-weight: 900;
-  letter-spacing: 0.01em;
-  line-height: 1.15;
+    font-weight: 900;
+    letter-spacing: 0.01em;
+    line-height: 1.15;
 
-  text-decoration: none;
-  cursor: pointer;
+    text-decoration: none;
+    cursor: pointer;
 
-  border: 2px solid rgba(255, 255, 255, 0.18);
+    border: 2px solid rgba(255, 255, 255, 0.18);
 
-  font-size: clamp(1rem, 2.05vw, 1.35rem);
+    font-size: clamp(1rem, 2.05vw, 1.35rem);
 
-  max-width: min(56rem, 100%);
-  width: fit-content;
+    max-width: min(56rem, 100%);
+    width: fit-content;
 
-  white-space: normal;
-  overflow-wrap: normal;
-  word-break: keep-all;
-  hyphens: none;
+    white-space: normal;
+    overflow-wrap: normal;
+    word-break: keep-all;
+    hyphens: none;
 
-  box-shadow:
-    0 12px 22px rgba(0, 0, 0, 0.22),
-    0 0 20px rgba(239, 68, 68, 0.22);
+    box-shadow:
+        0 12px 22px rgba(0, 0, 0, 0.22),
+        0 0 20px rgba(239, 68, 68, 0.22);
 
-  transition: filter 160ms ease, box-shadow 160ms ease, transform 160ms ease;
+    transition: filter 160ms ease, box-shadow 160ms ease, transform 160ms ease;
+
+    animation: cta_vibrate 1.6s cubic-bezier(.2, .9, .2, 1) infinite;
+    transform: translateZ(0);
+    will-change: transform;
+}
+
+@keyframes cta_vibrate {
+
+    /* pihen a ciklus elején */
+    0%,
+    62% {
+        transform: translateZ(0) scale(1) rotate(0deg);
+    }
+
+    /* lassabb, jól látható “rezgés” a ciklus végén */
+    66% {
+        transform: translate3d(-2px, 0, 0) scale(1.03) rotate(-1.1deg);
+    }
+
+    70% {
+        transform: translate3d(2px, 0, 0) scale(1.03) rotate(1.1deg);
+    }
+
+    74% {
+        transform: translate3d(-3px, 0, 0) scale(1.03) rotate(-1.3deg);
+    }
+
+    78% {
+        transform: translate3d(3px, 0, 0) scale(1.03) rotate(1.3deg);
+    }
+
+    82% {
+        transform: translate3d(-2px, 0, 0) scale(1.02) rotate(-0.9deg);
+    }
+
+    86% {
+        transform: translate3d(2px, 0, 0) scale(1.02) rotate(0.9deg);
+    }
+
+    /* visszaáll */
+    92% {
+        transform: translate3d(0, 0, 0) scale(1.01) rotate(0deg);
+    }
+
+    100% {
+        transform: translateZ(0) scale(1) rotate(0deg);
+    }
 }
 
 .offer__cta:hover {
-  filter: brightness(1.06);
-  box-shadow:
-    0 16px 26px rgba(0, 0, 0, 0.28),
-    0 0 26px rgba(239, 68, 68, 0.28);
+    filter: brightness(1.06);
+    box-shadow:
+        0 16px 26px rgba(0, 0, 0, 0.28),
+        0 0 26px rgba(239, 68, 68, 0.28);
 }
 
 .offer__cta:active {
-  transform: translateY(1px);
-  filter: brightness(1.02);
+    transform: translateY(1px);
+    filter: brightness(1.02);
 }
 
 .offer__cta:focus-visible {
-  outline: 3px solid rgba(14, 165, 233, 0.55);
-  outline-offset: 4px;
+    outline: 3px solid rgba(14, 165, 233, 0.55);
+    outline-offset: 4px;
 }
 
 /* Lebegés */
 @keyframes floatY_simple {
-  0%, 100% { transform: translateY(-10px); }
-  50% { transform: translateY(10px); }
+
+    0%,
+    100% {
+        transform: translateY(-10px);
+    }
+
+    50% {
+        transform: translateY(10px);
+    }
+}
+
+/* =========================================================
+   MOBILE: OFFER CTA BOX (telefonon)
+   - alapból rejtve (PC/Tablet: hosszú CTA marad)
+   ========================================================= */
+
+.offer__box {
+    width: 100%;
+    max-width: min(56rem, 100%);
+
+    display: none;
+    /* ✅ alapból NEM látszik */
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    gap: clamp(0.45rem, 1.4vw, 0.75rem);
+
+    padding: clamp(1rem, 3.2vw, 1.5rem) clamp(1rem, 4vw, 2rem);
+
+    border-radius: 18px;
+    border: 2px solid rgba(91, 161, 210, 0.35);
+
+    background: linear-gradient(135deg,
+            rgba(14, 165, 233, 0.07),
+            rgba(240, 208, 62, 0.07));
+
+    box-shadow:
+        0 18px 28px rgba(0, 0, 0, 0.10),
+        0 0 0 6px rgba(14, 165, 233, 0.06);
+
+    min-width: 0;
+}
+
+.offer__box-caption {
+    font-weight: 900;
+    letter-spacing: 0.02em;
+    line-height: 1.15;
+    text-align: center;
+
+    color: var(--header-bg-color);
+    font-size: clamp(1.05rem, 2.7vw, 1.45rem);
+
+    max-width: 100%;
+    text-wrap: pretty;
+}
+
+.offer__box-subcaption {
+    font-weight: 900;
+    letter-spacing: 0.12em;
+    line-height: 1.0;
+    text-align: center;
+
+    color: var(--texts);
+    font-size: clamp(0.95rem, 2.2vw, 1.15rem);
 }
 
 /* =========================================================
@@ -247,168 +418,72 @@
    ========================================================= */
 
 @media (max-width: 700px) {
-  .site-header__inner.section-content {
-    gap: 0.75rem;
-  }
+    .site-header__inner.section-content {
+        gap: 0.75rem;
+    }
 
-  .site-header__contact {
-    font-size: clamp(0.9rem, 3.2vw, 1.1rem);
-  }
+    .site-header__contact {
+        font-size: clamp(0.9rem, 2.9vw, 1.025rem);
+        padding: 0.45rem 0.65rem;
+    }
 
-  .site-header__logo.offer__logo {
-    max-width: clamp(120px, 34vw, 280px);
-  }
+    .site-header__contact-icon {
+        width: 1.9rem;
+        height: 1.9rem;
+    }
 
-  .offer__cta {
-    font-size: clamp(1.15rem, 2.9vw, 1.6rem);
-  }
+    .site-header__contact-icon i {
+        font-size: 1rem;
+    }
+
+    .site-header__logo.offer__logo {
+        max-width: clamp(120px, 34vw, 280px);
+    }
+
+    .offer__cta {
+        font-size: clamp(1.15rem, 2.9vw, 1.6rem);
+    }
+
+    /* ✅ Telefon: hosszú CTA el, boxed CTA be */
+    .offer__cta-pos--desktop {
+        display: none;
+    }
+
+    .offer__box {
+        display: flex;
+    }
+
+    /* rövid CTA legyen kicsit “tömörebb”, jól tappolható */
+    .offer__cta--short {
+        min-width: clamp(14rem, 42vw, 22rem);
+    }
 }
 
 @media (max-width: 420px) {
-  .site-header__inner.section-content {
-    gap: 0.5rem;
-  }
+    .site-header__inner.section-content {
+        gap: 0.5rem;
+    }
 
-  .site-header__contact {
-    max-width: 12.5rem;
-  }
+    .site-header__contact {
+        max-width: 12.8rem;
+    }
 
-  .site-header__logo.offer__logo {
-    max-width: 52vw;
-  }
+    .site-header__logo.offer__logo {
+        max-width: 52vw;
+    }
 }
 
-/* =========================================================
-   INDEX2: DEBUG SWITCH (csak index2-ben)
-   ========================================================= */
 
-.debug-switch {
-  background: linear-gradient(
-    135deg,
-    rgba(14, 165, 233, 0.10),
-    rgba(240, 208, 62, 0.10)
-  );
+@media (max-width: 340px) {
 
-  border-bottom: 2px solid rgba(0, 0, 0, 0.12);
-}
 
-.debug-switch__inner.section-content {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-wrap: wrap;
+    .site-header__contact-text {
+        display: none;
+    }
 
-  gap: 0.65rem;
-  padding-top: 0.6rem;
-  padding-bottom: 0.6rem;
-}
-
-.debug-switch__btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-
-  padding: 0.55rem 0.95rem;
-  border-radius: 999px;
-
-  text-decoration: none;
-  cursor: pointer;
-
-  font-weight: 900;
-  letter-spacing: 0.02em;
-  line-height: 1.15;
-
-  font-size: clamp(0.95rem, 2.2vw, 1.1rem);
-
-  color: var(--header-bg-color);
-  background: rgba(255, 255, 255, 0.85);
-
-  border: 2px solid rgba(91, 161, 210, 0.55);
-  box-shadow: 0 10px 18px rgba(0, 0, 0, 0.08);
-
-  transform: translateZ(0);
-  transition: transform 160ms ease, box-shadow 160ms ease, filter 160ms ease;
-}
-
-.debug-switch__btn:hover {
-  transform: translateY(-1px);
-  filter: brightness(1.03);
-  box-shadow: 0 14px 22px rgba(0, 0, 0, 0.10);
-}
-
-.debug-switch__btn:active {
-  transform: translateY(0);
-}
-
-.debug-switch__btn:focus-visible {
-  outline: 3px solid rgba(14, 165, 233, 0.55);
-  outline-offset: 4px;
-}
-
-.debug-switch__btn--active {
-  background: rgba(240, 208, 62, 0.75);
-  border-color: rgba(240, 208, 62, 0.95);
-}
-
-/* =========================================================
-   INDEX2: OFFER CTA BOX (csak index2-ben)
-   ========================================================= */
-
-.offer__box {
-  width: 100%;
-  max-width: min(56rem, 100%);
-
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-
-  gap: clamp(0.45rem, 1.4vw, 0.75rem);
-
-  padding: clamp(1rem, 3.2vw, 1.5rem) clamp(1rem, 4vw, 2rem);
-
-  border-radius: 18px;
-  border: 2px solid rgba(91, 161, 210, 0.35);
-
-  background: linear-gradient(
-    135deg,
-    rgba(14, 165, 233, 0.07),
-    rgba(240, 208, 62, 0.07)
-  );
-
-  box-shadow:
-    0 18px 28px rgba(0, 0, 0, 0.10),
-    0 0 0 6px rgba(14, 165, 233, 0.06);
-
-  min-width: 0;
-}
-
-.offer__box-caption {
-  font-weight: 900;
-  letter-spacing: 0.02em;
-  line-height: 1.15;
-  text-align: center;
-
-  color: var(--header-bg-color);
-  font-size: clamp(1.05rem, 2.7vw, 1.45rem);
-
-  max-width: 100%;
-  text-wrap: pretty;
-}
-
-.page-index2 .offer__box-subcaption {
-  font-weight: 900;
-  letter-spacing: 0.12em;
-  line-height: 1.0;
-  text-align: center;
-
-  color: var(--texts);
-  font-size: clamp(0.95rem, 2.2vw, 1.15rem);
-}
-
-/* index2-ben a rövid CTA lehet picit “tömörebb” */
-.page-index2 .offer__cta {
-  min-width: clamp(14rem, 42vw, 22rem);
+    .site-header__contact-text__narrow {
+        display: block;
+    }
 }
 
 /* =========================================================
@@ -416,13 +491,16 @@
    ========================================================= */
 
 @media (prefers-reduced-motion: reduce) {
-  .offer__cta-pos {
-    animation: none !important;
-  }
+    .offer__cta-pos {
+        animation: none !important;
+    }
 
-  .offer__cta,
-  .site-header__contact,
-  .page-index2 .debug-switch__btn {
-    transition: none !important;
-  }
+    .offer__cta {
+        animation: none !important;
+    }
+
+    .offer__cta,
+    .site-header__contact {
+        transition: none !important;
+    }
 }
