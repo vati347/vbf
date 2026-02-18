@@ -82,13 +82,13 @@
 /* Pozicionálás + lebegés WRAPPEREN */
 .welcome-hero__btn-pos {
   position: absolute;
-  top: 3rem;
+  bottom: 3rem;
   left: 50%;
   transform: translateX(-50%);
   z-index: 2;
 
-  animation: floatY 3s ease-in-out infinite;
-  will-change: transform;
+  /* animation: floatY 3s ease-in-out infinite;
+  will-change: transform; */
 }
 
 /* CTA gomb – már NEM absolute, csak a kinézet + hover scale */
@@ -98,7 +98,7 @@
   justify-content: center;
   gap: 0.6rem;
 
-  padding: 0.85rem 1.15rem;
+  padding: 0.85rem 3rem;
   border-radius: 999px;
 
   text-decoration: none;
