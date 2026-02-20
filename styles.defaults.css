@@ -33,10 +33,10 @@
 
   /* Header és Navbar */
   /* Navigációs sáv háttér: */
-  --header-bg-color: linear-gradient(45deg, rgb(73, 71, 67), rgb(56, 52, 49));
-  --welcome-about-btn: rgba(30, 38, 46, 1);
-  --footer-bg-color: var(--header-bg-color);
+  /* --header-bg-color: linear-gradient(45deg, rgb(73, 71, 67), rgb(56, 52, 49)); */
+  --header-bg-color: radial-gradient(circle at 20% 20%, rgba(35, 65, 118, 0.95), rgba(21, 40, 80, 0.98));
 
+  --welcome-about-btn: rgba(30, 38, 46, 1);
 
   /* Footer maradhat a régi sötét (ha nem akarod világosítani a footert is) */
   --footer-bg-color: rgba(30, 38, 46, 1);

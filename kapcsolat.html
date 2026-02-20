@@ -1,152 +1,159 @@
 <!doctype html>
-<html lang="hu">
+<html lang="hu-HU">
+
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Kapcsolat – VBF+</title>
   <meta name="description" content="Kapcsolatfelvétel a VBF+ csapatával. Üzenetküldés közvetlenül az oldalról." />
+  <meta name="theme-color" content="#0EA5E9">
+  <link rel="icon" href="favicon.ico">
 
-  <!-- A saját meglévő CSS-eid -->
-  <link rel="stylesheet" href="/styles.defaults.css" />
-  <link rel="stylesheet" href="/styles.css" />
-  <!-- Kontakt oldal kiegészítés -->
-  <link rel="stylesheet" href="/styles.email.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap&family=Roboto&family=Inter&display=swap&family=Montserrat:wght@500;600;700;800&display=swap"
+    rel="stylesheet">
 
-  <!-- (Ha használsz Bootstrap Icons-t a projektben, akkor maradhat a <i class="bi ..."> ) -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="styles.defaults.css">
+  <link rel="stylesheet" href="styles.nav.css">
+  <link rel="stylesheet" href="styles.welcome.css">
+  <link rel="stylesheet" href="styles.services.css">
+  <link rel="stylesheet" href="styles.services.modal.css">
+  <link rel="stylesheet" href="styles.contacts.css">
+  <link rel="stylesheet" href="styles.car.css">
+  <link rel="stylesheet" href="styles.ref.css">
+  <link rel="stylesheet" href="styles.email.css">
 </head>
 
 <body>
-  <a class="skip-link" href="#main">Ugrás a tartalomra</a>
 
-  <!-- Ha van külön header/nav a projektedben, itt tartsd meg ugyanazt.
-       Ide most nem tettem, hogy ne ütközzön a meglévő struktúráddal. -->
+  <a class="skip-link" href="#content">Ugrás a tartalomra</a>
 
-  <main id="main">
-    <section class="contact constant-margin">
-      <h3 class="heading">Kapcsolatfelvétel</h3>
+  <header class="site-header" role="banner">
+    <div class="site-header__inner section-content">
 
-      <p class="description centered contact-lead">
-        Küldj üzenetet a lenti űrlapon — a rendszer a megadott adatokat a <b>info@vbfplus.hu</b> címre továbbítja.
-      </p>
+      <!-- BAL: Email -->
+      <div class="site-header__side site-header__side--left">
+        <a class="site-header__contact site-header__contact--email" href="mailto:info@vbfplus.hu"
+          aria-label="Email: info@vbfplus.hu">
+          <span class="site-header__contact-icon" aria-hidden="true">
+            <i class="bi bi-envelope-fill"></i>
+          </span>
+          <span class="site-header__contact-text">info@vbfplus.hu</span>
+          <span class="site-header__contact-text__narrow">Email</span>
+        </a>
+      </div>
 
-      <div class="section-content">
-        <div class="contact-grid">
-          <!-- INFO KÁRTYA -->
-          <aside class="contact-card contact-card--info" aria-label="Elérhetőségek">
-            <div class="contact-card__header">
-              <h4 class="contact-card__title">Elérhetőségek</h4>
-              <p class="contact-card__subtitle">
-                Ha inkább közvetlenül írnál:
-                <a class="contact-link" href="mailto:info@vbfplus.hu">info@vbfplus.hu</a>
-              </p>
-            </div>
+      <!-- KÖZÉP: Logo -->
+      <div class="site-header__center">
+        <span class="site-header__logo-wing site-header__logo-wing--left" aria-hidden="true">
+          VILLAMOS
+        </span>
 
-            <ul class="contact-meta" aria-label="Információk">
-              <li class="contact-meta__item">
-                <span class="contact-meta__label">E-mail</span>
-                <span class="contact-meta__value">
-                  <a class="contact-link" href="mailto:info@vbfplus.hu">info@vbfplus.hu</a>
-                </span>
-              </li>
+        <a class="offer__logo-link site-header__logo-link" href="./index.html" aria-label="Főoldal">
+          <img class="offer__logo site-header__logo" src="./images/newbg.png" alt="Logo" loading="lazy">
+        </a>
 
-              <li class="contact-meta__item">
-                <span class="contact-meta__label">Válaszidő</span>
-                <span class="contact-meta__value">Jellemzően 1 munkanapon belül</span>
-              </li>
+        <span class="site-header__logo-wing site-header__logo-wing--right" aria-hidden="true">
+          BIZTONSÁG
+        </span>
+      </div>
 
-              <li class="contact-meta__item">
-                <span class="contact-meta__label">Tipp</span>
-                <span class="contact-meta__value">Írd meg a helyszínt/telephelyet és a feladat típusát.</span>
-              </li>
-            </ul>
+      <!-- JOBB: Telefon -->
+      <div class="site-header__side site-header__side--right">
+        <a class="site-header__contact site-header__contact--phone" href="tel:+36202969591"
+          aria-label="Telefon: +36202969591">
+          <span class="site-header__contact-icon" aria-hidden="true">
+            <i class="bi bi-telephone-fill"></i>
+          </span>
+          <span class="site-header__contact-text">+36-20/296-9591</span>
+          <span class="site-header__contact-text__narrow">Tel</span>
+        </a>
+      </div>
 
-            <div class="contact-note" role="note">
-              Az üzenet elküldésével elfogadod, hogy a megadott adatokat kizárólag kapcsolatfelvétel céljából kezeljük.
-            </div>
-          </aside>
+    </div>
+  </header>
 
-          <!-- ŰRLAP KÁRTYA -->
-          <section class="contact-card contact-card--form" aria-label="Üzenet küldése">
-            <div class="contact-card__header">
-              <h4 class="contact-card__title">Üzenet küldése</h4>
-              <p class="contact-card__subtitle">A *-gal jelölt mezők kötelezőek.</p>
-            </div>
+  <main id="content" tabindex="-1">
+    <div class="grid-container-contact">
 
-            <form class="contact-form" action="/contact.php" method="POST" accept-charset="UTF-8">
-              <div class="contact-row">
-                <label class="contact-field">
-                  <span class="contact-field__label">Név *</span>
-                  <input class="contact-field__control"
-                         name="name"
-                         required
-                         maxlength="80"
-                         autocomplete="name"
-                         placeholder="Pl. Kovács Péter">
-                </label>
+      <section class="contact bgd-bxs-card constant-margin">
+        <h3 class="heading contact-heading">Kapcsolatfelvétel</h3>
 
-                <label class="contact-field">
-                  <span class="contact-field__label">E-mail *</span>
-                  <input class="contact-field__control"
-                         type="email"
-                         name="email"
-                         required
-                         maxlength="120"
-                         autocomplete="email"
-                         placeholder="pl. peter@email.hu">
-                </label>
-              </div>
+        <div id="ghostbg" class="section-content">
+          <div class="contact-grid">
 
-              <label class="contact-field">
-                <span class="contact-field__label">Telefon (opcionális)</span>
-                <input class="contact-field__control"
-                       name="phone"
-                       maxlength="40"
-                       autocomplete="tel"
-                       placeholder="+36 …">
-              </label>
+            <!-- INFO KÁRTYA -->
+            <aside class="contact-card contact-card--info" aria-label="Elérhetőségek">
+              <ul class="contact-meta" aria-label="Információk">
+                <li class="contact-meta__item">
+                  <span class="contact-meta__label">Név</span>
+                  <span class="contact-meta__value">Vass Gábor</span>
+                </li>
 
-              <label class="contact-field">
-                <span class="contact-field__label">Üzenet *</span>
-                <textarea class="contact-field__control"
-                          name="message"
-                          required
-                          maxlength="3000"
-                          rows="7"
-                          placeholder="Írd le röviden, miben segíthetünk…"></textarea>
-              </label>
+                <li class="contact-meta__item">
+                  <span class="contact-meta__label">Telefon</span>
+                  <span class="contact-meta__value">
+                    <a class="contact-link" href="tel:+36202969591">+36-20/296-9591</a>
+                  </span>
+                </li>
 
-              <!-- Honeypot (robotcsapda) -->
-              <div class="hp" aria-hidden="true">
-                <label>Website <input name="website" tabindex="-1" autocomplete="off"></label>
-              </div>
+                <li class="contact-meta__item">
+                  <span class="contact-meta__label">E-mail</span>
+                  <span class="contact-meta__value">
+                    <a class="contact-link" href="mailto:info@vbfplus.hu">info@vbfplus.hu</a>
+                  </span>
+                </li>
 
-              <div class="contact-actions">
-                <button class="contact-btn" type="submit">Küldés</button>
+                <li class="contact-meta__item">
+                  <span class="contact-meta__label">Válaszidő</span>
+                  <span class="contact-meta__value">Jellemzően 1 munkanapon belül</span>
+                </li>
 
-                <a class="contact-btn contact-btn--ghost"
-                   href="mailto:info@vbfplus.hu?subject=Kapcsolatfelv%C3%A9tel%20-%20vbfplus.hu">
-                  E-mail kliens megnyitása
+              </ul>
+
+              <div class="contact-quick">
+                <a class="contact-quick__btn" href="tel:+36202969591" aria-label="Azonnali hívás">
+                  <i class="bi bi-telephone" aria-hidden="true"></i>
+                  Hívás
+                </a>
+
+                <a class="contact-quick__btn contact-quick__btn--ghost"
+                  href="mailto:info@vbfplus.hu?subject=Kapcsolatfelv%C3%A9tel%20-%20vbfplus.hu"
+                  aria-label="E-mail kliens megnyitása">
+                  <i class="bi bi-envelope" aria-hidden="true"></i>
+                  E-mail
                 </a>
               </div>
+            </aside>
 
-              <p class="contact-help">
-                Ha nem érkezik válasz, nézd meg a spam/promóciók mappát is.
-              </p>
-            </form>
-          </section>
+
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
 
-    <!-- Mobil “sticky” gomb: email -->
-    <a class="call-button" href="mailto:info@vbfplus.hu" aria-label="E-mail küldése">
-      <!-- ha van bootstrap icon: <i class="bi bi-envelope"></i> -->
-      ✉️
-      Email
-    </a>
+      <div class="about-actions">
+        <a class="about-back-btn" href="./index.html" aria-label="Vissza a főoldalra">
+          <i class="bi bi-arrow-left-circle" aria-hidden="true"></i>
+          Vissza a főoldalra
+        </a>
+      </div>
+
+    </div>
   </main>
 
-  <!-- A footer-ed nálad abszolút pozicionált, ezért érdemes a meglévő footer markupot megtartani.
-       Ha van központi footer komponensed, ide tedd be. -->
+  <footer>
+    <div>
+      <p>&copy Vass Gábor E. V.</p>
+      <p>&copy website by br0k3n</p>
+    </div>
+  </footer>
+
+  <script src="scripts.js"></script>
 </body>
+
 </html>
